@@ -5,7 +5,7 @@
 $(document).ready ->
   $(".key").click ->
     btnClick($(@).text())
-
+		setTimeout("scrollTo(0,1)",100)
 
 # 当たり番号
 hits =
@@ -38,3 +38,6 @@ showResult = (score) ->
   else
     $("#message").text("#{message}の可能性があります")
 
+# スクロール
+hideAddressBar ->
+  setTimeout("scrollTo(0,1)", 100)

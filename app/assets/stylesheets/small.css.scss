@@ -2,38 +2,48 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$border-color: #696969;
+
+body {
+  height: 480px;
+}
+
 div#number {
   margin: 5px 0 5px 0;
   padding: 5px;
   height: 40px;
   font-size: 200%;
   border: 4px solid;
+  border-color: $border-color;
 }
 
 div#message {
   margin: 5px 0 5px 0;
   padding: 5px;
-  height: 40px;
-  font-size: 200%;
+  height: 20px;
+  font-size: 100%;
   border: 4px solid;
+  border-color: $border-color;
 }
 
 div#mesh ul{
-  margin: 0px;
+  margin: 0 auto;
   padding: 0px;
-  width: 206px;
+  width: 298px;
+  border-color: $border-color;
 }
 
 div#mesh li{
   float:left;
-  margin: 0 10px 10px 0;
+  margin: 0 20px 10px 0;
   padding: 5px;
   height: 50px;
-  width: 50px;
+  width: 74px;
   border: 1px solid;
   list-stryle: none;
   overflow: hidden;
   font-size: 150%;
+  border-color: $border-color;
 }
 
 div#mesh li.right{
