@@ -9,16 +9,17 @@ $(document).ready ->
   else
     $(".key").click ->
       btnClick($(@).text())
-
   setTimeout("scrollTo(0,1)",100)
 
 # 当たり番号
 hits =
-  "1等" : "187077"
-  "2等" : "179409"
-  "3等" : "119658"
-  "4等" : "....30"
-  "5等" : ".....9"
+  "1等" : ["195280"]
+  "前後賞" : ["195279","195281"]
+  "2等" : ["107914","158839","179593"]
+  "3等" : ["130749"]
+  "4等" : ["..1600"]
+  "5等" : ["....07"]
+  "6等" : [".....0"]
 
 # 表示処理
 btnClick = (number) ->
@@ -29,16 +30,21 @@ btnClick = (number) ->
     score = $("#number").text() + number
     if score.length <= 6
       $("#number").text(score)
-      showResult(score)
+      searchNumber(score)
+
+# 当たり番号探査
+searchNumber = (score) ->
+  messages = []
+  for key, values of hits
+    for value in values
+      diff = value.slice(0, score.length)
+      if score.match(new RegExp("^#{diff}"))
+        messages.push(key) unless key in messages
+  showResult(messages)
 
 # 結果表示
-showResult = (score) ->
-  message = ""
-  for key, value of hits
-    diff = value.slice(0, score.length)
-    if score.match(new RegExp("^#{diff}"))
-      message = message + key
-  if message == ""
+showResult = (messages) ->
+  if messages.length == 0
     $("#message").text("残念！")
   else
-    $("#message").text("#{message}の可能性があります")
+    $("#message").text("#{messages.join(',')}の可能性があります")
